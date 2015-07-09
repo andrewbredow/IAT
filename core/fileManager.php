@@ -221,7 +221,7 @@ if( isset($_REQUEST['op']) )
 								// category name
 								if(!isset($form["tabs".$i."-catlabel-input"]) ||
 									strlen($form["tabs".$i."-catlabel-input"]) > 30 || 
-									$form["tabs".$i."-catlabel-input"] != preg_replace('/[^A-Za-z0-9\-\(\)\$\#\@\? ]+/', '', $form["tabs".$i."-catlabel-input"]))
+									$form["tabs".$i."-catlabel-input"] != preg_replace('/[^A-Za-z0-9\-\(\/\)\$\#\@\? ]+/', '', $form["tabs".$i."-catlabel-input"]))
 								{
 									$errors .= "<li class='error-item'>";
 									$errors .= "Please input a valid category label for Category " . $catnames[$i-1];
