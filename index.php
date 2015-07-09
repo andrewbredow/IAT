@@ -14,9 +14,12 @@
 
 <body>
     
+<noscript>
+  Javascript must be enabled for the application to run.<br><br>
+  Please enable javascript to continue.<br><br>
+</noscript>
+
 <div id="instructions">
-    Javascript must be enabled for the application to run.<br><br>
-    Please enable javascript to continue.<br><br>
 </div>
 
 </body>
