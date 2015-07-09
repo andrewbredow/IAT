@@ -85,6 +85,9 @@ body {
 	display: none;
 }
 
+h2 {
+  text-align: center;
+}
 input[type=submit] {
   color: #fff;
   background-color: #337ab7;
