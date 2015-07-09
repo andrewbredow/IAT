@@ -121,37 +121,37 @@ function startIAT()
 function buildPage()
 {
   if (template.catA.itemtype == "img")
-    {
-      for (i in template.catA.items)
-        {
-          var itemstr = '<img id="'+template.catA.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.catA.items[i]+'">';
-          $("#exp_instruct").after(itemstr);
-        }
-    }
-    if (template.catB.itemtype == "img")
+  {
+    for (i in template.catA.items)
       {
-        for (i in template.catB.items)
-          {
-            var itemstr = '<img id="'+template.catB.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.catB.items[i]+'">';
-            $("#exp_instruct").after(itemstr);
-          }
+        var itemstr = '<img id="'+template.catA.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.catA.items[i]+'">';
+        $("#exp_instruct").after(itemstr);
       }
-      if (template.cat1.itemtype == "img")
-        {
-          for (i in template.cat1.items)
-            {
-              var itemstr = '<img id="'+template.cat1.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.cat1.items[i]+'">';
-              $("#exp_instruct").after(itemstr);
-            }
-        }
-        if (template.cat2.itemtype == "img")
-          {
-            for (i in template.cat2.items)
-              {
-                var itemstr = '<img id="'+template.cat2.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.cat2.items[i]+'">';
-                $("#exp_instruct").after(itemstr);
-              }
-          }
+  }
+  if (template.catB.itemtype == "img")
+  {
+    for (i in template.catB.items)
+      {
+        var itemstr = '<img id="'+template.catB.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.catB.items[i]+'">';
+        $("#exp_instruct").after(itemstr);
+      }
+  }
+  if (template.cat1.itemtype == "img")
+  {
+    for (i in template.cat1.items)
+      {
+        var itemstr = '<img id="'+template.cat1.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.cat1.items[i]+'">';
+        $("#exp_instruct").after(itemstr);
+      }
+  }
+  if (template.cat2.itemtype == "img")
+  {
+    for (i in template.cat2.items)
+      {
+        var itemstr = '<img id="'+template.cat2.datalabel+i+'" class="IATitem" src="templates/'+template.name+'/img/'+template.cat2.items[i]+'">';
+        $("#exp_instruct").after(itemstr);
+      }
+  }
 }
 
 // Round object
@@ -197,7 +197,10 @@ function initRounds()
       break;
 
     }
-    prevIndexA = -1; prevIndex1 = -1;
+
+    prevIndexA = [];
+    prevIndex1 = [];
+    threshold  = 3;
     for (var j = 0; j<numrounds; j++)
     {
       var round = new IATround();
@@ -225,9 +228,13 @@ function initRounds()
 
         // pick an item different from the last
         do
-        { round.catIndex = Math.floor(Math.random()*template.catA.items.length); }
-        while (prevIndexA == round.catIndex)
-          prevIndexA = round.catIndex;
+        {
+          round.catIndex = Math.floor(Math.random()*template.catA.items.length);
+        }
+        while (prevIndexA.indexOf(round.catIndex) > -1)
+        if (prevIndexA.unshift(round.catIndex) > threshold) {
+          prevIndexA.pop();
+        }
 
       }
       else if (round.category == template.catB.datalabel)
@@ -237,9 +244,13 @@ function initRounds()
         else { round.correct = 1; }
         // pick an item different from the last
         do
-        { round.catIndex = Math.floor(Math.random()*template.catB.items.length); }
-        while (prevIndexA == round.catIndex)
-          prevIndexA = round.catIndex;
+        {
+          round.catIndex = Math.floor(Math.random()*template.catB.items.length);
+        }
+        while (prevIndexA.indexOf(round.catIndex) > -1)
+        if (prevIndexA.unshift(round.catIndex) > threshold) {
+          prevIndexA.pop();
+        }
       }
       else if (round.category == template.cat1.datalabel)
       {
@@ -247,9 +258,13 @@ function initRounds()
         round.correct = 1;
         // pick an item different from the last
         do
-        { round.catIndex = Math.floor(Math.random()*template.cat1.items.length); }
-        while (prevIndex1 == round.catIndex)
-          prevIndex1 = round.catIndex;
+        {
+          round.catIndex = Math.floor(Math.random()*template.cat1.items.length);
+        }
+        while (prevIndex1.indexOf(round.catIndex) > -1)
+        if (prevIndex1.unshift(round.catIndex) > threshold) {
+          prevIndexA.pop();
+        }
       }
       else if (round.category == template.cat2.datalabel)
       {
@@ -257,9 +272,13 @@ function initRounds()
         round.correct = 2;
         // pick an item different from the last
         do
-        { round.catIndex = Math.floor(Math.random()*template.cat2.items.length); }
-        while (prevIndex1 == round.catIndex)
-          prevIndex1 = round.catIndex;
+        {
+          round.catIndex = Math.floor(Math.random()*template.cat2.items.length);
+        }
+        while (prevIndex1.indexOf(round.catIndex) > -1)
+        if (prevIndex1.unshift(round.catIndex) > threshold) {
+          prevIndexA.pop();
+        }
       }
 
       roundArray[i].push(round);
