@@ -1,1 +1,1 @@
-{"active":"Science","available":["Empty","Race","Science"]}
+{"active":"Science","available":{"2":"Attractiveness vs Status","3":"Empty","0":"Race","1":"Science"}}
