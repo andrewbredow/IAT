@@ -177,9 +177,12 @@ function initRounds()
         switch (i)
         {
             case 0:
-            case 4:
                 stype = "target";
                 numrounds = 20;
+                break;
+            case 4:
+                stype = "target";
+                numrounds = 40;
                 break;
             case 1:    
                 stype = "association";
