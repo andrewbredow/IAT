@@ -16,10 +16,7 @@ function initialize()
 		document.title = input.active + " IAT";
 		$.getJSON("templates/"+input.active+"/input.txt", function(data) { 
 			template = data;
-			$.get("core/instruct0.html", function(data) {
-				$("#instructions").html(data);
-				$("#subID").val(randomString(10));
-			});
+			loadInstructions("one");
 		});
 	});
 	
@@ -30,7 +27,7 @@ function loadInstructions(stage)
 	switch(stage)
 	{
 		case 'one':
-			sub = $("#subID").val();
+			sub = randomString(10);
 			if(sub.search('/[^a-zA-Z0-9]/g')==-1)
 			{
 				$.get("core/instruct1.html", function(data) {
