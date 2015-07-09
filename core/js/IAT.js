@@ -263,7 +263,7 @@ function initRounds()
         }
         while (prevIndex1.indexOf(round.catIndex) > -1)
         if (prevIndex1.unshift(round.catIndex) > threshold) {
-          prevIndexA.pop();
+          prevIndex1.pop();
         }
       }
       else if (round.category == template.cat2.datalabel)
@@ -277,7 +277,7 @@ function initRounds()
         }
         while (prevIndex1.indexOf(round.catIndex) > -1)
         if (prevIndex1.unshift(round.catIndex) > threshold) {
-          prevIndexA.pop();
+          prevIndex1.pop();
         }
       }
 
