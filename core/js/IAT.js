@@ -178,31 +178,30 @@ function initRounds()
     {
       case 0:
         stype = "target";
-      numrounds = 20;
-      break;
+        numrounds = 20;
+        break;
       case 4:
         stype = "target";
-      numrounds = 40;
-      break;
+        numrounds = 40;
+        break;
       case 1:
         stype = "association";
-      numrounds = 20;
-      break;
+        numrounds = 20;
+        break;
       case 2:
-        case 3:
-        case 5:
-        case 6:
+      case 3:
+      case 5:
+      case 6:
         stype = "both";
-      numrounds = 40;
-      break;
+        numrounds = 40;
+        break;
 
     }
 
     prevIndexA = [];
-    prevIndexB = [];
     prevIndex1 = [];
-    prevIndex2 = [];
     threshold  = 3;
+
     for (var j = 0; j<numrounds; j++)
     {
       var round = new IATround();
@@ -249,9 +248,9 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.catB.items.length);
         }
-        while (prevIndexB.indexOf(round.catIndex) > -1)
-        if (prevIndexB.unshift(round.catIndex) > threshold) {
-          prevIndexB.pop();
+        while (prevIndexA.indexOf(round.catIndex) > -1)
+        if (prevIndexA.unshift(round.catIndex) > threshold) {
+          prevIndexA.pop();
         }
       }
       else if (round.category == template.cat1.datalabel)
@@ -277,9 +276,9 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.cat2.items.length);
         }
-        while (prevIndex2.indexOf(round.catIndex) > -1)
-        if (prevIndex2.unshift(round.catIndex) > threshold) {
-          prevIndex2.pop();
+        while (prevIndex1.indexOf(round.catIndex) > -1)
+        if (prevIndex1.unshift(round.catIndex) > threshold) {
+          prevIndex1.pop();
         }
       }
 
