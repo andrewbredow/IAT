@@ -210,7 +210,9 @@ function initRounds()
     }
 
     prevIndexA = [];
+    prevIndexB = [];
     prevIndex1 = [];
+    prevIndex2 = [];
     threshold  = 3;
 
     for (var j = 0; j<numrounds; j++)
@@ -259,9 +261,9 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.catB.items.length);
         }
-        while (prevIndexA.indexOf(round.catIndex) > -1)
-        if (prevIndexA.unshift(round.catIndex) > threshold) {
-          prevIndexA.pop();
+        while (prevIndexB.indexOf(round.catIndex) > -1)
+        if (prevIndexB.unshift(round.catIndex) > threshold) {
+          prevIndexB.pop();
         }
       }
       else if (round.category == template.cat1.datalabel)
@@ -287,9 +289,9 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.cat2.items.length);
         }
-        while (prevIndex1.indexOf(round.catIndex) > -1)
-        if (prevIndex1.unshift(round.catIndex) > threshold) {
-          prevIndex1.pop();
+        while (prevIndex2.indexOf(round.catIndex) > -1)
+        if (prevIndex2.unshift(round.catIndex) > threshold) {
+          prevIndex2.pop();
         }
       }
 
