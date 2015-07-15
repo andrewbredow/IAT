@@ -180,17 +180,28 @@ function initRounds()
         stype = "target";
         numrounds = 20;
         break;
-      case 4:
-        stype = "target";
-        numrounds = 40;
-        break;
       case 1:
         stype = "association";
         numrounds = 20;
         break;
+      // practice
       case 2:
+        stype = "both";
+        numrounds = 20;
+        break;
       case 3:
+        stype = "both";
+        numrounds = 40;
+        break;
+      case 4:
+        stype = "target";
+        numrounds = 40;
+        break;
+      // practice
       case 5:
+        stype = "both";
+        numrounds = 20;
+        break;
       case 6:
         stype = "both";
         numrounds = 40;
