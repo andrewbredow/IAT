@@ -1,1 +1,1 @@
-{"active":"Attractiveness vs Status","available":{"2":"Attractiveness vs Status","3":"Empty","0":"Race","1":"Science"}}
+{"active":"Attractiveness vs Status","available":{"3":"Attractiveness vs Status","1":"Attractiveness vs Warmth","4":"Empty","0":"Race","2":"Science"}}
