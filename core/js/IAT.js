@@ -216,22 +216,40 @@ function initRounds()
     prevIndex1 = [];
     prevIndex2 = [];
 
+    categoryList = [];
+    halfCategoryListAB = [];
+    halfCategoryList12 = [];
+    for (var c1 = 0; c1 < numrounds; c1++) {
+      categoryList.push(c1 % 2 == 0);
+      if (c1 < (numrounds/2)) {
+        halfCategoryList12.push(c1 % 2 == 0);
+        halfCategoryListAB.push(c1 % 2 == 0);
+      }
+    }
+    categoryList = shuffleArray(categoryList);
+    halfCategoryList12 = shuffleArray(halfCategoryList12);
+    halfCategoryListAB = shuffleArray(halfCategoryListAB);
+
     for (var j = 0; j<numrounds; j++)
     {
       var round = new IATround();
 
       if (stype == "target")
       {
-        round.category = (Math.random() < 0.5 ? template.catA.datalabel : template.catB.datalabel);
+        round.category = categoryList[j] ? template.catA.datalabel : template.catB.datalabel;
       }
       else if (stype == "association")
       {
-        round.category = (Math.random() < 0.5 ? template.cat1.datalabel : template.cat2.datalabel);
+        round.category = categoryList[j] ? template.cat1.datalabel : template.cat2.datalabel;
       }
       else if (stype == "both")
       {
-        if (j % 2 == 0) { round.category = (Math.random() < 0.5 ? template.catA.datalabel : template.catB.datalabel); }
-        else { round.category = (Math.random() < 0.5 ? template.cat1.datalabel : template.cat2.datalabel); }
+        if (j % 2 == 0) {
+          var currentCategoryIndex = j == 0 ? 0 : j/2;
+          round.category = (halfCategoryListAB[currentCategoryIndex] ? template.catA.datalabel : template.catB.datalabel); }
+        else {
+          var currentCategoryIndex = (j-1) == 0 ? 0 : (j-1)/2;
+          round.category = (halfCategoryList12[currentCategoryIndex] ? template.cat1.datalabel : template.cat2.datalabel); }
       }
 
       // pick a category
@@ -739,3 +757,10 @@ function runSession(kEvent)
         roundArray[session][roundnum].errors++; // note error
       }
 }
+
+function shuffleArray(o)
+{
+  for(var j, x, i = o.length; i; 
+          j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+          return o;
+};
