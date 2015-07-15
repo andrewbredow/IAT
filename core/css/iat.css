@@ -99,3 +99,7 @@ input[type=submit] {
   border-radius: 4px;
   font-size: inherit;
 }
+
+.example-table td:first-child {
+  width: 27%;
+}
