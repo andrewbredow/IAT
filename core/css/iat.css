@@ -6,12 +6,15 @@ body {
 #instructions
 {
     background: #fff;
-    padding: 10px;
+    padding: 16px;
     margin-left: auto;
     margin-right: auto;
     min-height: 480px;
-    width: 621px;
+    width: 631px;
     border: solid black 1px;
+}
+#instructions.wide {
+  width: 731px;
 }
 
 #experiment_frame

@@ -32,6 +32,7 @@ function loadInstructions(stage)
       {
         $.get("core/instruct1.html", function(data) {
           $("#instructions").html(data);
+          $("#instructions").addClass("wide");
           $(".IATname").html(template.name);
           if( template.catA.itemtype == "img" ||
              template.catB.itemtype == "img" ||
@@ -50,6 +51,7 @@ function loadInstructions(stage)
         case 'two':
           $.get("core/instruct2.html", function(data) {
           $("#instructions").html(data);
+          $("#instructions").removeClass("wide");
 
           $("#clabel1").html(template.cat1.label);
           $("#clabel2").html(template.cat2.label);
@@ -213,7 +215,6 @@ function initRounds()
     prevIndexB = [];
     prevIndex1 = [];
     prevIndex2 = [];
-    threshold  = 3;
 
     for (var j = 0; j<numrounds; j++)
     {
@@ -246,8 +247,8 @@ function initRounds()
           round.catIndex = Math.floor(Math.random()*template.catA.items.length);
         }
         while (prevIndexA.indexOf(round.catIndex) > -1)
-        if (prevIndexA.unshift(round.catIndex) > threshold) {
-          prevIndexA.pop();
+        if (prevIndexA.unshift(round.catIndex) == template.catA.items.length) {
+          prevIndexA = [];
         }
 
       }
@@ -262,8 +263,8 @@ function initRounds()
           round.catIndex = Math.floor(Math.random()*template.catB.items.length);
         }
         while (prevIndexB.indexOf(round.catIndex) > -1)
-        if (prevIndexB.unshift(round.catIndex) > threshold) {
-          prevIndexB.pop();
+        if (prevIndexB.unshift(round.catIndex) == template.catB.items.length) {
+          prevIndexB = [];
         }
       }
       else if (round.category == template.cat1.datalabel)
@@ -276,8 +277,8 @@ function initRounds()
           round.catIndex = Math.floor(Math.random()*template.cat1.items.length);
         }
         while (prevIndex1.indexOf(round.catIndex) > -1)
-        if (prevIndex1.unshift(round.catIndex) > threshold) {
-          prevIndex1.pop();
+        if (prevIndex1.unshift(round.catIndex) == template.cat1.items.length) {
+          prevIndex1 = [];
         }
       }
       else if (round.category == template.cat2.datalabel)
@@ -290,8 +291,8 @@ function initRounds()
           round.catIndex = Math.floor(Math.random()*template.cat2.items.length);
         }
         while (prevIndex2.indexOf(round.catIndex) > -1)
-        if (prevIndex2.unshift(round.catIndex) > threshold) {
-          prevIndex2.pop();
+        if (prevIndex2.unshift(round.catIndex) == template.cat2.items.length) {
+          prevIndex2 = [];
         }
       }
 
