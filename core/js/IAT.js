@@ -371,8 +371,7 @@ function instructionPage()
                }
                else
                  {
-                   resulttext = "<div style='text-align:center;padding:20px'>Thanks for participating!</div>";
-                   $("#picture_frame").html(resulttext);
+                   window.location.href = "http://research.carriebredow.com/iat2?subject=" + sub;
                  }
     }
     else
