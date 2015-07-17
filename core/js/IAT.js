@@ -212,9 +212,13 @@ function initRounds()
     }
 
     prevIndexA = [];
+    lastItemA = null;
     prevIndexB = [];
+    lastItemB = null;
     prevIndex1 = [];
+    lastItem1 = null;
     prevIndex2 = [];
+    lastItem2 = null;
 
     categoryList = [];
     halfCategoryListAB = [];
@@ -264,11 +268,11 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.catA.items.length);
         }
-        while (prevIndexA.indexOf(round.catIndex) > -1)
+        while (prevIndexA.indexOf(round.catIndex) > -1 || lastItemA === round.catIndex)
         if (prevIndexA.unshift(round.catIndex) == template.catA.items.length) {
           prevIndexA = [];
         }
-
+        lastItemA = round.catIndex;
       }
       else if (round.category == template.catB.datalabel)
       {
@@ -280,10 +284,11 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.catB.items.length);
         }
-        while (prevIndexB.indexOf(round.catIndex) > -1)
+        while (prevIndexB.indexOf(round.catIndex) > -1 || lastItemB === round.catIndex)
         if (prevIndexB.unshift(round.catIndex) == template.catB.items.length) {
           prevIndexB = [];
         }
+        lastItemB = round.catIndex;
       }
       else if (round.category == template.cat1.datalabel)
       {
@@ -294,10 +299,11 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.cat1.items.length);
         }
-        while (prevIndex1.indexOf(round.catIndex) > -1)
+        while (prevIndex1.indexOf(round.catIndex) > -1 || lastItem1 === round.catIndex)
         if (prevIndex1.unshift(round.catIndex) == template.cat1.items.length) {
           prevIndex1 = [];
         }
+        lastItem1 = round.catIndex;
       }
       else if (round.category == template.cat2.datalabel)
       {
@@ -308,10 +314,11 @@ function initRounds()
         {
           round.catIndex = Math.floor(Math.random()*template.cat2.items.length);
         }
-        while (prevIndex2.indexOf(round.catIndex) > -1)
+        while (prevIndex2.indexOf(round.catIndex) > -1 || lastItem2 === round.catIndex)
         if (prevIndex2.unshift(round.catIndex) == template.cat2.items.length) {
           prevIndex2 = [];
         }
+        lastItem2 = round.catIndex;
       }
 
       roundArray[i].push(round);
