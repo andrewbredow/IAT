@@ -617,7 +617,8 @@ function WriteFile()
       str += roundArray[i][j].category+",";
       str += roundArray[i][j].catIndex+",";
       str += roundArray[i][j].errors+",";
-      str += (roundArray[i][j].endtime - roundArray[i][j].starttime)+"\n";
+      str += (roundArray[i][j].endtime - roundArray[i][j].starttime)+",";
+      str += (rountArray[i][j].firsttime - rountArray[i][j].starttime)+"\n";
       var catIndex=roundArray[i][j].catIndex;
       var category=roundArray[i][j].category;
       var datai=i;
@@ -736,11 +737,20 @@ function runSession(kEvent)
   keyE = (unicode == 69 || unicode == 101 );
   keyI = (unicode == 73 || unicode == 105 );
 
+  // Determine the current time
+  var currentTime = new Date().getTime();
+
+  // Set the time for the initial answer
+  if (roundArray[session][roundnum].firsttime === 0) {
+    roundArray[session][roundnum].firsttime = currentTime;
+  }
+
+
   // if correct key (1 & E) or (2 & I)
   if ((rCorrect == 1 && keyE) || (rCorrect == 2 && keyI))
     {
       $("#wrong").css("display","none"); // remove X if it exists
-      roundArray[session][roundnum].endtime = new Date().getTime(); // end time
+      roundArray[session][roundnum].endtime = currentTime; // end time
       // if more rounds
       if (roundnum < roundArray[session].length-1)
         {
