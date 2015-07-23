@@ -160,6 +160,7 @@ function buildPage()
 function IATround()
 {
   this.starttime = 0;
+  this.firsttime = 0;
   this.endtime = 0;
   this.itemtype = "none";
   this.category = "none";
